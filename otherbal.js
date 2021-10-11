@@ -260,8 +260,16 @@
             return result/(10**18)}).then(
               function(result) {
                 const tknbal = document.getElementById("tknbalance");
-                tknbal.innerHTML = `<h5> ${result.toLocaleString()}` + ' D$D </h5>';
+                tknbal.innerHTML = `${result.toLocaleString()}`;
                 console.log(result)
+
+              contract.methods.symbol().call().then(function(sym) {return sym})
+              .then(
+              function(sym) {
+              const tknsym = document.getElementById("tknsymbol");
+              tknsym.innerHTML = sym ;
+              console.log(sym) })  
+
              }
              )};
 
